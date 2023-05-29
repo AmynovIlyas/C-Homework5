@@ -23,7 +23,7 @@ int[] CreateArray(int size, int minValue, int maxValue)
 void SumUnevenNumbers(int[] array)
 {
     int sum = 0;
-    for (int i = 1; i < array.Length; i++)
+    for (int i = 1; i < array.Length; i = i + 2)
     {
         if (i % 2 == 1)
         {
