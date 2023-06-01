@@ -8,7 +8,8 @@ double[] CreateArray(int size)
     double[] array = new double[size];
     for(int i = 0; i < size; i++)
     {
-        array[i] = new Random().Next(-100, 101); 
+        array[i] = new Random().NextDouble() * 100; // умножаем на 100 для получения цифр от 10 до 100
+        // если этого не сделать будут выданы значения чисел 0 целых и много цифр после запятой 
     }
     return array;
 }
@@ -25,20 +26,21 @@ void FindMinMax(double[] array)
 {
     double min = array[0];
     double max = array[0];
-    for(int i = 1; i < array.Length; i++)
+    foreach(var el in array)
     {
-        if(max < array[i])
+        if(max < el)
         {
-            max = array[i];
+            max = el;
         }
-        if(min > array[i])
+        if(min > el)
         {
-            min = array[i];
+            min = el;
         }
     }
     Console.Write(max - min);
 }
 
+Console.Clear(); // данная команда чистит всё в терминале 
 int length = Prompt1("Введите число, задающее размер массива: ");
 double[] array = CreateArray(length);
-Console.Write($"[{String.Join(", ", array)}] --> "); FindMinMax(array);
+Console.Write($"[{String.Join("; ", array)}] --> "); FindMinMax(array);
